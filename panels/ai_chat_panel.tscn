@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bwhw3k52wp0ce"]
+
+[node name="AIChatPanel" type="MarginContainer" unique_id=1570321176]
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
