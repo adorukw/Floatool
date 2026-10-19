@@ -93,14 +93,14 @@ res://
 ├── main.tscn / main.gd             # 隐藏宿主窗口（见《Godot实现指南》第四步）
 ├── autoload/
 │   ├── ipc.gd                      # 接收 UDP 全局命令
-│   └── window_manager.gd           # 功能名 → 窗口实例的映射与 toggle
+│   └── window_manager.gd           # 管理唯一悬浮窗 + 显示/切页
 ├── windows/
-│   ├── base_window.gd              # 通用窗口基类：无边框/置顶/关闭=隐藏
-│   └── floatool_window.tscn/.gd    # ★ 本教程主角：带标签页的主悬浮窗
+│   └── floatool_window.tscn/.gd    # ★ 本教程主角：带标签页的唯一悬浮窗
 ├── panels/                         # 三个标签页各自独立成场景
 │   ├── note_panel.tscn/.gd
 │   ├── translate_panel.tscn/.gd
-│   └── ai_chat_panel.tscn/.gd
+│   ├── ai_chat_panel.tscn/.gd
+│   └── chat_bubble.tscn            # AI 聊天气泡（可选）
 └── assets/
     ├── fonts/                      # 中文字体（避免豆腐块）
     └── ui_theme.tres               # 全局主题
@@ -538,7 +538,7 @@ func _load_tab() -> int:
 
 ## 8. 窗口行为：拖动 / 置顶 / 关闭=隐藏
 
-这几项是"悬浮窗"的通用行为，逻辑上应该抽到 `windows/base_window.gd` 里（`extends Window`），让 `FloatoolWindow` 继承它。详细说明见《Godot实现指南》第五、六步，这里只列关键点。
+这几项是"悬浮窗"的通用行为，直接写在 `floatool_window.gd`（`extends Window`）里即可。**只有一个窗口时不需要基类**；以后真要多窗口了，再把公共部分抽到 `windows/base_window.gd` 让它们继承。详细说明见《Godot实现指南》第五步，这里只列关键点。
 
 ### 8.1 拖动窗口
 
