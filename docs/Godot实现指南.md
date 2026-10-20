@@ -179,8 +179,12 @@ func _ready() -> void:
 	# 1) 关掉"窗口一关就自动退出"的行为
 	get_tree().auto_accept_quit = false
 
-	# 2) 隐藏这个宿主主窗口，进程继续在后台跑
-	get_window().visible = false
+	# 2) 让宿主主窗口"隐身"。
+	#    ⚠️ 不能写 get_window().visible = false，Godot 会报
+	#    "Can't change visibility of main window"（主窗口是根窗口，没有父窗口）。
+	#    官方推荐做法：设为不可聚焦（从任务栏/任务切换器隐藏）+ 最小化。
+	get_window().unfocusable = true
+	get_window().mode = Window.MODE_MINIMIZED
 
 	# 3) 把 IPC 命令转发给窗口管理器
 	#    注意：Ipc / WindowManager 要先按第六步注册成 Autoload，否则这里会报"标识符未定义"
@@ -201,10 +205,34 @@ func _on_command_received(cmd: String) -> void:
 | 代码 | 作用 |
 |------|------|
 | `get_tree().auto_accept_quit = false` | 关掉「关闭窗口 = 自动退出」。之后必须手动 `get_tree().quit()` 才退出 |
-| `get_window().visible = false` | 隐藏主场景所在的系统窗口。**隐藏 ≠ 关闭**，进程和 `_process` 都还在 |
+| `get_window().unfocusable = true` + `get_window().mode = Window.MODE_MINIMIZED` | **不能直接 `visible = false`**（会报 "Can't change visibility of main window"）。官方做法是最小化 + 不可聚焦：主窗口从任务栏/任务切换器里消失，进程和 `_process` 继续在后台运行 |
 | `Ipc.command_received.connect(...)` | 接收外部命令，转给 `WindowManager` |
 
 真正的退出出口是 `cmd == "quit"` 分支（见第六步），因为 `auto_accept_quit` 已经关掉了普通关闭退出的行为。
+
+### 4.5 GNOME 用户：主窗口还会出现在 Activities 概览里
+
+`unfocusable + 最小化` 能让主窗口从**任务栏 / Dock** 消失，但 **GNOME 的 Activities（活动概览）会列出所有最小化的窗口**，所以你仍然能在概览里看到一个空的 `Floatool` 窗口。这是 GNOME 的行为，不是 Godot 的 bug。
+
+要让它在概览里也几乎看不见，把主窗口做成 **1×1 全透明**：
+
+| Project Settings | 值 |
+|------------------|----|
+| Display → Window → Size → **Window Width Override** | `1` |
+| Display → Window → Size → **Window Height Override** | `1` |
+| Display → Window → Size → **Borderless** | 开 |
+| Display → Window → Size → **Transparent** | 开 |
+| Display → Window → Size → **No Focus** | 开 |
+| Display → Window → **Per Pixel Transparency → Allowed** | 开 |
+| Rendering → **Viewport → Transparent Background** | 开 |
+| Application → **Boot Splash → Show Image** | 关 |
+| Application → **Boot Splash → Bg Color** | 全透明（Alpha = 0） |
+
+`main.gd` 里的 `unfocusable + MODE_MINIMIZED` 保留不动。
+
+这样即使概览里还残留一个 1×1 的条目，视觉上也等于不存在。
+
+> 不推荐依赖 GNOME 扩展（如 "Hide Minimized"）来解决，因为用户环境不一定装了。
 
 ---
 
@@ -395,7 +423,7 @@ signal command_received(command: String)
 
 const PORT = 45670
 
-var _udp := PacketPeerUDP()
+var _udp := PacketPeerUDP.new()
 
 func _ready() -> void:
 	var err := _udp.bind(PORT, "127.0.0.1")
@@ -610,7 +638,9 @@ X-GNOME-Autostart-enabled=true
 | 界面尺寸是 0 / 什么都没看到 | `Root` 没铺满，或主窗口被隐藏 | `Root` 用 **Full Rect**；用 Remote 面板显示窗口 |
 | 标签区下面留白 | `Tabs` 的竖向 Size Flags 没设 | 设成 **Expand Fill** |
 | 标签标题是英文节点名 | 没调 `set_tab_title` | `_ready` 里循环设中文 |
-| 置顶无效 | 没走 x11 驱动 / 开了 Transient | 设 `driver.linuxbsd = x11`；关 Transient |
+| 置顶无效 / 悬浮窗不是独立窗口 | `driver.linuxbsd` 设成了 `wayland`，或开了 Transient | 改成 **`x11`**（走 XWayland）；关 Transient |
+| 报错 `Can't change visibility of main window` | 对根窗口用了 `visible = false` | 改用 `unfocusable = true` + `mode = Window.MODE_MINIMIZED` |
+| GNOME Activities 概览里还能看到空的主窗口 | GNOME 会列出最小化窗口；`unfocusable` 只管任务栏/Dock | 主窗口做成 **1×1 全透明**，见 4.5 |
 | 关闭后进程退出了 | 用 `get_tree().quit()` 连了关闭按钮 | 关闭只连 `hide` |
 | 运行后什么都没看到 | 主窗口被脚本隐藏了 | 用 Remote 面板手动显示，属正常 |
 | Autoload 报错 | 脚本没继承 `Node` | 改成 `extends Node` |

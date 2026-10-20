@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://cp01b0i52tnns"]
+
+[ext_resource type="FontFile" uid="uid://1tieayheg7hj" path="res://assets/fonts/NotoSansCJK-Regular.ttc" id="1_wf4hb"]
+
+[resource]
+default_font = ExtResource("1_wf4hb")

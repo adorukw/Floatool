@@ -4,7 +4,11 @@ extends Node
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
 
-	get_window().visible = false
+	get_window().unfocusable = true
+	get_window().mode = Window.MODE_MINIMIZED
 
-# func _on_command_recived(cmd: String) -> void:
-# 	WindowManager.toggle(cmd)
+	Ipc.command_received.connect(_on_command_received)
+
+
+func _on_command_received(cmd: String) -> void:
+	WindowManager.toggle(cmd)

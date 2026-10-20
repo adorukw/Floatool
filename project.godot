@@ -13,16 +13,31 @@ config_version=5
 config/name="Floatool"
 run/main_scene="uid://ddlebkl8rg37k"
 config/features=PackedStringArray("4.7", "Forward Plus")
+boot_splash/bg_color=Color(0.14117648, 0.14117648, 0.14117648, 0)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+Ipc="*uid://cjt23bblgqdsu"
+WindowManager="*uid://dgyq85u5pa13l"
 
 [display]
 
-window/size/viewport_width=420
-window/size/viewport_height=560
+window/size/viewport_width=1
+window/size/viewport_height=1
 window/size/borderless=true
+window/size/transparent=true
+window/size/no_focus=true
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-display_server/driver.linuxbsd="wayland"
+window/per_pixel_transparency/allowed=true
+display_server/driver.linuxbsd="x11"
+
+[gui]
+
+theme/custom="uid://cp01b0i52tnns"
 
 [physics]
 
@@ -31,3 +46,4 @@ display_server/driver.linuxbsd="wayland"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+viewport/transparent_background=true

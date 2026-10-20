@@ -10,7 +10,7 @@ const PAGE_TITLES = ["便签", "翻译", "AI问答"]
 
 func _ready() -> void:
 	for i in PAGE_TITLES.size():
-		tabs.set_tab.title(i, PAGE_TITLES[i])
+		tabs.set_tab_title(i, PAGE_TITLES[i])
 
 	close_button.pressed.connect(hide)
 	close_requested.connect(hide)

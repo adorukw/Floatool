@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://btwj87aoka23q"]
 
+[ext_resource type="Script" uid="uid://np0imoxfv1tf" path="res://windows/floatool_window.gd" id="1_yiefv"]
 [ext_resource type="PackedScene" uid="uid://b8jy5jx26hru8" path="res://panels/note_panel.tscn" id="1_ykeet"]
 [ext_resource type="PackedScene" uid="uid://dwgsoi1opottm" path="res://panels/translate_panel.tscn" id="2_yiefv"]
 [ext_resource type="PackedScene" uid="uid://bwhw3k52wp0ce" path="res://panels/ai_chat_panel.tscn" id="3_ky36i"]
@@ -7,11 +8,11 @@
 [node name="FloatoolWindow" type="Window" unique_id=107489173]
 oversampling_override = 1.0
 title = "Floatool"
-position = Vector2i(0, 36)
 size = Vector2i(420, 560)
 unresizable = true
 borderless = true
 always_on_top = true
+script = ExtResource("1_yiefv")
 
 [node name="Root" type="PanelContainer" parent="." unique_id=853396858]
 anchors_preset = 15
