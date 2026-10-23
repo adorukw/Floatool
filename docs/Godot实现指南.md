@@ -46,23 +46,23 @@ Ipc (Autoload)
 
 WindowManager (Autoload)
   └─ FloatoolWindow (Window)          ← 唯一的系统窗口
-        └── Root (PanelContainer)
-            └── Layout (VBoxContainer)
-                ├── TitleBar (HBoxContainer)   拖动条 + 关闭
-                └── Tabs (TabContainer)
-                    ├── Note        (MarginContainer)  便签页
-                    ├── Translate   (MarginContainer)  翻译页
-                    └── AIChat      (MarginContainer)  AI 页
+		└── Root (PanelContainer)
+			└── Layout (VBoxContainer)
+				├── TitleBar (HBoxContainer)   拖动条 + 关闭
+				└── Tabs (TabContainer)
+					├── Note        (MarginContainer)  便签页
+					├── Translate   (MarginContainer)  翻译页
+					└── AIChat      (MarginContainer)  AI 页
 ```
 
 ### 命令流
 
 ```
 桌面环境快捷键  →  qn note  →  UDP 127.0.0.1:45670
-      →  Ipc.command_received("note")
-      →  Main._on_command_received("note")
-      →  WindowManager.toggle("note")
-      →  FloatoolWindow.show_page("note")   （显示窗口 + 切到便签页）
+	  →  Ipc.command_received("note")
+	  →  Main._on_command_received("note")
+	  →  WindowManager.toggle("note")
+	  →  FloatoolWindow.show_page("note")   （显示窗口 + 切到便签页）
 ```
 
 ### 要做的事
@@ -147,8 +147,8 @@ res://
 │   ├── ai_chat_panel.tscn / .gd
 │   └── chat_bubble.tscn            # AI 聊天气泡（可选）
 └── assets/
-    ├── fonts/                      # 中文字体
-    └── ui_theme.tres               # 全局主题
+	├── fonts/                      # 中文字体
+	└── ui_theme.tres               # 全局主题
 ```
 
 > **为什么页面要独立成场景？**
@@ -275,13 +275,13 @@ func _on_command_received(cmd: String) -> void:
 ```
 FloatoolWindow (Window)
 └── Root (PanelContainer)            ← Full Rect，铺满窗口
-    └── Layout (VBoxContainer)
-        ├── TitleBar (HBoxContainer)  ← 拖动条
-        │   ├── Title (Label)         "Floatool"
-        │   ├── Spacer (Control)      Expand Fill
-        │   ├── PinButton (Button)    "📌"
-        │   └── CloseButton (Button)  "✕"
-        └── Tabs (TabContainer)       ← 第五步 5.4 的内容放这里
+	└── Layout (VBoxContainer)
+		├── TitleBar (HBoxContainer)  ← 拖动条
+		│   ├── Title (Label)         "Floatool"
+		│   ├── Spacer (Control)      Expand Fill
+		│   ├── PinButton (Button)    "📌"
+		│   └── CloseButton (Button)  "✕"
+		└── Tabs (TabContainer)       ← 第五步 5.4 的内容放这里
 ```
 
 操作：
@@ -330,13 +330,13 @@ FloatoolWindow (Window)
 ```
 FloatoolWindow (Window)
 └── Root (PanelContainer, Full Rect)
-    └── Layout (VBoxContainer)
-        ├── TitleBar (HBoxContainer)
-        │   ├── Title / Spacer / PinButton / CloseButton
-        └── Tabs (TabContainer, Expand Fill)
-            ├── Note (MarginContainer)
-            ├── Translate (MarginContainer)
-            └── AIChat (MarginContainer)
+	└── Layout (VBoxContainer)
+		├── TitleBar (HBoxContainer)
+		│   ├── Title / Spacer / PinButton / CloseButton
+		└── Tabs (TabContainer, Expand Fill)
+			├── Note (MarginContainer)
+			├── Translate (MarginContainer)
+			└── AIChat (MarginContainer)
 ```
 
 ### 5.5 把三个页面拆成独立场景（推荐）

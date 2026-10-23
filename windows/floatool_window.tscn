@@ -9,9 +9,8 @@
 oversampling_override = 1.0
 title = "Floatool"
 size = Vector2i(420, 560)
-unresizable = true
-borderless = true
 always_on_top = true
+min_size = Vector2i(360, 420)
 script = ExtResource("1_yiefv")
 
 [node name="Root" type="PanelContainer" parent="." unique_id=853396858]
@@ -25,28 +24,9 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TitleBar" type="HBoxContainer" parent="Root/Layout" unique_id=374885304]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="Root/Layout/TitleBar" unique_id=84515448]
-layout_mode = 2
-text = "Floatool"
-
-[node name="Spacer" type="Control" parent="Root/Layout/TitleBar" unique_id=1139017615]
-layout_mode = 2
-
-[node name="PinButton" type="Button" parent="Root/Layout/TitleBar" unique_id=978858654]
-layout_mode = 2
-text = "📌"
-flat = true
-
-[node name="CloseButton" type="Button" parent="Root/Layout/TitleBar" unique_id=1823205789]
-layout_mode = 2
-text = "✕"
-flat = true
-
 [node name="Tabs" type="TabContainer" parent="Root/Layout" unique_id=1676976790]
 layout_mode = 2
+size_flags_vertical = 3
 current_tab = 1
 
 [node name="Note" parent="Root/Layout/Tabs" unique_id=1377342145 instance=ExtResource("1_ykeet")]

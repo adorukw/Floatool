@@ -9,6 +9,9 @@ func _ready() -> void:
 
 	Ipc.command_received.connect(_on_command_received)
 
+	await get_tree().process_frame
+	WindowManager.toggle("note")
+
 
 func _on_command_received(cmd: String) -> void:
 	WindowManager.toggle(cmd)

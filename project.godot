@@ -35,6 +35,10 @@ window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true
 display_server/driver.linuxbsd="x11"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/markdownlabel/plugin.cfg")
+
 [gui]
 
 theme/custom="uid://cp01b0i52tnns"
