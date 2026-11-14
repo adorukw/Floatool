@@ -126,3 +126,9 @@ func _swap_languages() -> void:
 		var temp := source.text
 		source.text = result.text
 		result.text = temp
+
+
+func activate() -> void:
+	await get_tree().process_frame
+	if visible:
+		source.grab_focus()

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://djyajedx7p51i"]
+
+[node name="ChatBubble" type="PanelContainer" unique_id=1566646674]
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1364993397]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Text" type="RichTextLabel" parent="Margin" unique_id=1049438800]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true

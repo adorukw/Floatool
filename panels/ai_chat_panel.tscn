@@ -1,7 +1,33 @@
 [gd_scene format=3 uid="uid://bwhw3k52wp0ce"]
 
-[node name="AIChatPanel" type="MarginContainer" unique_id=1570321176]
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+[ext_resource type="Script" uid="uid://dufue4iqeifss" path="res://panels/ai_chat_panel.gd" id="1_t80sc"]
+
+[node name="AIChatPanel" type="VBoxContainer" unique_id=2012052344]
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_t80sc")
+
+[node name="Scroll" type="ScrollContainer" parent="." unique_id=554179994]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Messages" type="VBoxContainer" parent="Scroll" unique_id=1112032022]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputBar" type="HBoxContainer" parent="." unique_id=1584430117]
+layout_mode = 2
+
+[node name="Input" type="TextEdit" parent="InputBar" unique_id=662440969]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "问点什么..."
+wrap_mode = 1
+
+[node name="SendButton" type="Button" parent="InputBar" unique_id=430607517]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1372608616]
+timeout = 60.0
