@@ -1,8 +1,10 @@
 extends MarginContainer
 
-const SAVE_PATH = "user://note.md"
-
 @onready var editor: TextEdit = $Layout/Split/Editor
+
+
+func _note_path() -> String:
+	return Settings.note_path()
 
 
 func _apply_mode(editing: bool) -> void:
@@ -29,8 +31,9 @@ func _update_preview() -> void:
 
 
 func _load() -> void:
-	if FileAccess.file_exists(SAVE_PATH):
-		editor.text = FileAccess.get_file_as_string(SAVE_PATH)
+	var path := _note_path()
+	if FileAccess.file_exists(path):
+		editor.text = FileAccess.get_file_as_string(path)
 
 
 func _toggle_preview() -> void:
@@ -38,7 +41,8 @@ func _toggle_preview() -> void:
 
 
 func _save() -> void:
-	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var path := _note_path()
+	var f := FileAccess.open(path, FileAccess.WRITE)
 	if f:
 		f.store_string(editor.text)
 		f.close()

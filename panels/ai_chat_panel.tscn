@@ -2,32 +2,40 @@
 
 [ext_resource type="Script" uid="uid://dufue4iqeifss" path="res://panels/ai_chat_panel.gd" id="1_t80sc"]
 
-[node name="AIChatPanel" type="VBoxContainer" unique_id=2012052344]
-offset_right = 16.0
-offset_bottom = 16.0
+[node name="AIChatPanel" type="MarginContainer" unique_id=1541004806]
+offset_right = 72.0
+offset_bottom = 84.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 script = ExtResource("1_t80sc")
 
-[node name="Scroll" type="ScrollContainer" parent="." unique_id=554179994]
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1843750120]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Layout" unique_id=995967879]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Messages" type="VBoxContainer" parent="Scroll" unique_id=1112032022]
+[node name="Messages" type="VBoxContainer" parent="Layout/Scroll" unique_id=1716586108]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InputBar" type="HBoxContainer" parent="." unique_id=1584430117]
+[node name="InputBar" type="HBoxContainer" parent="Layout" unique_id=511521241]
 layout_mode = 2
 
-[node name="Input" type="TextEdit" parent="InputBar" unique_id=662440969]
+[node name="Input" type="TextEdit" parent="Layout/InputBar" unique_id=1142308025]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "问点什么..."
 wrap_mode = 1
 
-[node name="SendButton" type="Button" parent="InputBar" unique_id=430607517]
+[node name="SendButton" type="Button" parent="Layout/InputBar" unique_id=1831386527]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+text = "发送"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1372608616]
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=528751470]
 timeout = 60.0

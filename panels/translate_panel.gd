@@ -32,10 +32,6 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-const DEEPL_URL = "https://api-free.deepl.com/v2/translate"
-const DEEPL_KEY = "96c209d3-6ea5-4cc1-baaa-07a80c6bce68:fx"
-
-
 func _translate() -> void:
 	var text := source.text.strip_edges()
 	if text.is_empty():
@@ -45,22 +41,27 @@ func _translate() -> void:
 	if http.get_http_client_status() != HTTPClient.STATUS_DISCONNECTED:
 		return
 
-	var from_code: String = LANG_CODES.get(from_lang.get_selected_id(), "AUTO")
-	var to_code: String = LANG_CODES.get(to_lang.get_selected_id(), "EN")
+	var default_source := str(Settings.get_value("translate", "source_lang", "EN"))
+	var default_target := str(Settings.get_value("translate", "target_lang", "ZH"))
+	var from_code: String = LANG_CODES.get(from_lang.get_selected_id(), default_source)
+	var to_code: String = LANG_CODES.get(to_lang.get_selected_id(), default_target)
 
 	var body := "text=%s&target_lang=%s" % [text.uri_encode(), to_code]
 	if from_code != "AUTO":
 		body += "&source_lang=" + from_code
 
+	var url := Settings.deepl_url()
+	var key := Settings.deepl_key()
+
 	var headers := [
-		"Authorization: DeepL-Auth-Key " + DEEPL_KEY,
+		"Authorization: DeepL-Auth-Key " + key,
 		"Content-Type: application/x-www-form-urlencoded",
 	]
 
 	result.text = "翻译中..."
 	translate_button.disabled = true
 
-	var err := http.request(DEEPL_URL, headers, HTTPClient.METHOD_POST, body)
+	var err := http.request(url, headers, HTTPClient.METHOD_POST, body)
 	if err != OK:
 		result.text = "请求失败 : %s" % error_string(err)
 		translate_button.disabled = false

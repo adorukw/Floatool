@@ -1,17 +1,16 @@
-extends VBoxContainer
+extends MarginContainer
 
 const BUBBLE = preload("res://components/chat_bubble.tscn")
-const API_URL = "https://api.deepseek.com/chat/completions"
-const MODEL = "deepseek-chat"
-const MAX_HISTORY = 20
 
-@onready var messages: VBoxContainer = $Scroll/Messages
-@onready var input: TextEdit = $InputBar/Input
-@onready var scroll: ScrollContainer = $Scroll
-@onready var send_button: Button = $InputBar/SendButton
+@onready var messages: VBoxContainer = $Layout/Scroll/Messages
+@onready var input: TextEdit = $Layout/InputBar/Input
+@onready var scroll: ScrollContainer = $Layout/Scroll
+@onready var send_button: Button = $Layout/InputBar/SendButton
 @onready var http: HTTPRequest = $HTTPRequest
 
-var _history: Array = [{ "role": "system", "content": "你是一个简洁的中文助手" }]
+var _history: Array = [
+	{ "role": "system", "content": str(Settings.get_value("ai", "system_prompt", "你是一个简洁的中文助手")) }
+]
 
 var _pending_label: RichTextLabel = null
 
@@ -69,10 +68,16 @@ func _send() -> void:
 	send_button.disabled = true
 	_pending_label = _add_bubble("思考中", false)
 
-	var body := JSON.stringify({ "model": MODEL, "messages": _history, "stream": false })
-	var headers := ["Authorization: Bearer " + _api_key(), "Content-Type: application/json"]
+	var url := Settings.ai_base_url()
+	var model := Settings.ai_model()
+	var key := Settings.ai_key()
 
-	var err := http.request(API_URL, headers, HTTPClient.METHOD_POST, body)
+	var body := JSON.stringify({ "model": model, "messages": _history, "stream": false })
+	var headers := ["Content-Type: application/json"]
+	if not key.is_empty():
+		headers.append("Authorization: Bearer " + key)
+
+	var err := http.request(url, headers, HTTPClient.METHOD_POST, body)
 	if err != OK:
 		send_button.disabled = false
 		if _pending_label:
@@ -124,7 +129,8 @@ func _on_request_completed(
 
 
 func _trim_history() -> void:
-	while _history.size() > MAX_HISTORY + 1:
+	var limit := int(Settings.get_value("ai", "max_history", 20))
+	while _history.size() > limit + 1:
 		_history.remove_at(1)
 
 

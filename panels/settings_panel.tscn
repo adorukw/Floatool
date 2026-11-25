@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://c5ax7ch4lo8yl"]
+
+[ext_resource type="Script" uid="uid://pgwjextifnkp" path="res://panels/settings_panel.gd" id="1_kdmsv"]
+
+[node name="Settings" type="MarginContainer" unique_id=1429812914]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+script = ExtResource("1_kdmsv")
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=617806820]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Layout" unique_id=1094648658]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Content" type="VBoxContainer" parent="Layout/Scroll" unique_id=1880074984]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="NoteSection" type="VBoxContainer" parent="Layout/Scroll/Content" unique_id=2088672614]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Layout/Scroll/Content/NoteSection" unique_id=256087876]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "便签"
+
+[node name="Grid" type="GridContainer" parent="Layout/Scroll/Content/NoteSection" unique_id=1854924744]
+layout_mode = 2
+columns = 2
+
+[node name="Label1" type="Label" parent="Layout/Scroll/Content/NoteSection/Grid" unique_id=1983174267]
+layout_mode = 2
+text = "保存路径"
+
+[node name="PathRow" type="HBoxContainer" parent="Layout/Scroll/Content/NoteSection/Grid" unique_id=690584139]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PathField" type="LineEdit" parent="Layout/Scroll/Content/NoteSection/Grid/PathRow" unique_id=1991081016]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BrowseButton" type="Button" parent="Layout/Scroll/Content/NoteSection/Grid/PathRow" unique_id=1422692495]
+layout_mode = 2
+text = "浏览..."
+
+[node name="Label2" type="Label" parent="Layout/Scroll/Content/NoteSection/Grid" unique_id=240347985]
+layout_mode = 2
+text = "默认文件夹路径"
+
+[node name="OpenFolderButton" type="Button" parent="Layout/Scroll/Content/NoteSection/Grid" unique_id=51567585]
+layout_mode = 2
+text = "打开所在文件夹"
+
+[node name="HSeparator" type="HSeparator" parent="Layout/Scroll/Content/NoteSection" unique_id=2088408546]
+layout_mode = 2
+
+[node name="TranslateSection" type="VBoxContainer" parent="Layout/Scroll/Content" unique_id=653855265]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Layout/Scroll/Content/TranslateSection" unique_id=1747335765]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "翻译"
+
+[node name="Grid" type="GridContainer" parent="Layout/Scroll/Content/TranslateSection" unique_id=822484249]
+layout_mode = 2
+columns = 2
+
+[node name="Label1" type="Label" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=1521977514]
+layout_mode = 2
+text = "接口地址"
+
+[node name="UrlField" type="LineEdit" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=1355337959]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=791575465]
+layout_mode = 2
+text = "Api Key
+"
+
+[node name="KeyRow" type="HBoxContainer" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=906838336]
+layout_mode = 2
+
+[node name="KeyField" type="LineEdit" parent="Layout/Scroll/Content/TranslateSection/Grid/KeyRow" unique_id=816655034]
+layout_mode = 2
+size_flags_horizontal = 3
+secret = true
+
+[node name="ShowKeyButton" type="Button" parent="Layout/Scroll/Content/TranslateSection/Grid/KeyRow" unique_id=322789441]
+layout_mode = 2
+text = "👁"
+
+[node name="Label3" type="Label" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=1273345531]
+layout_mode = 2
+text = "源语言"
+
+[node name="SourceLang" type="LineEdit" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=1450030811]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=206806785]
+layout_mode = 2
+text = "目标语言"
+
+[node name="TargetLang" type="LineEdit" parent="Layout/Scroll/Content/TranslateSection/Grid" unique_id=1639320819]
+layout_mode = 2
+
+[node name="TestRow" type="HBoxContainer" parent="Layout/Scroll/Content/TranslateSection" unique_id=350840575]
+layout_mode = 2
+
+[node name="TestButton" type="Button" parent="Layout/Scroll/Content/TranslateSection/TestRow" unique_id=529458781]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "测试连接"
+
+[node name="TestResult" type="Label" parent="Layout/Scroll/Content/TranslateSection/TestRow" unique_id=1983462354]
+layout_mode = 2
+
+[node name="AISection" type="VBoxContainer" parent="Layout/Scroll/Content" unique_id=1319841865]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Layout/Scroll/Content/AISection" unique_id=439744456]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "AI 助手"
+
+[node name="Grid" type="GridContainer" parent="Layout/Scroll/Content/AISection" unique_id=1425581260]
+layout_mode = 2
+columns = 2
+
+[node name="Label1" type="Label" parent="Layout/Scroll/Content/AISection/Grid" unique_id=269990095]
+layout_mode = 2
+text = "Base URL"
+
+[node name="UrlField" type="LineEdit" parent="Layout/Scroll/Content/AISection/Grid" unique_id=1894321370]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Layout/Scroll/Content/AISection/Grid" unique_id=1306002786]
+layout_mode = 2
+text = "Model"
+
+[node name="ModelField" type="LineEdit" parent="Layout/Scroll/Content/AISection/Grid" unique_id=455648009]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Layout/Scroll/Content/AISection/Grid" unique_id=847473434]
+layout_mode = 2
+text = "API Key"
+
+[node name="KeyRow" type="HBoxContainer" parent="Layout/Scroll/Content/AISection/Grid" unique_id=1087235184]
+layout_mode = 2
+
+[node name="KeyField" type="LineEdit" parent="Layout/Scroll/Content/AISection/Grid/KeyRow" unique_id=1609497551]
+layout_mode = 2
+size_flags_horizontal = 3
+secret = true
+
+[node name="ShowKeyButton" type="Button" parent="Layout/Scroll/Content/AISection/Grid/KeyRow" unique_id=914233019]
+layout_mode = 2
+text = "👁"
+
+[node name="Label4" type="Label" parent="Layout/Scroll/Content/AISection/Grid" unique_id=1799614335]
+layout_mode = 2
+text = "系统提示词"
+
+[node name="SystemPrompt" type="TextEdit" parent="Layout/Scroll/Content/AISection/Grid" unique_id=1464084706]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label5" type="Label" parent="Layout/Scroll/Content/AISection/Grid" unique_id=136838125]
+layout_mode = 2
+text = "上下文条数"
+
+[node name="SpinBox" type="SpinBox" parent="Layout/Scroll/Content/AISection/Grid" unique_id=997781701]
+layout_mode = 2
+min_value = 1.0
+value = 20.0
+
+[node name="TestRow" type="HBoxContainer" parent="Layout/Scroll/Content/AISection" unique_id=1633841203]
+layout_mode = 2
+
+[node name="TestButton" type="Button" parent="Layout/Scroll/Content/AISection/TestRow" unique_id=453901476]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "测试连接"
+
+[node name="TestResult" type="Label" parent="Layout/Scroll/Content/AISection/TestRow" unique_id=575999406]
+layout_mode = 2
+
+[node name="HotKeySection" type="VBoxContainer" parent="Layout/Scroll/Content" unique_id=606592890]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Layout/Scroll/Content/HotKeySection" unique_id=1386456631]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "快捷键"
+
+[node name="Label" type="Label" parent="Layout/Scroll/Content/HotKeySection" unique_id=340543452]
+layout_mode = 2
+text = "使用命令
+/bin/bash -c 'printf %s note > \\
+/dev/udp/127.0.0.1/45670'"
+
+[node name="CopyButton" type="Button" parent="Layout/Scroll/Content/HotKeySection" unique_id=227352964]
+layout_mode = 2
+text = "复制快捷键"
+
+[node name="BottomBar" type="HBoxContainer" parent="Layout" unique_id=1597162118]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Layout/BottomBar" unique_id=1906509344]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatusLabel" type="Label" parent="Layout/BottomBar" unique_id=177155100]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "未保存"
+
+[node name="SaveButton" type="Button" parent="Layout/BottomBar" unique_id=617210535]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "保存设置"
+
+[node name="DeepLTestHttp" type="HTTPRequest" parent="." unique_id=1975844863]
+
+[node name="AITestHttp" type="HTTPRequest" parent="." unique_id=748533553]

@@ -1,8 +1,8 @@
 class_name FloatoolWindow
 extends Window
 
-const COMMAND_TO_TAB = { "note": 0, "translate": 1, "aichat": 2 }
-const PAGE_TITLES = ["便签", "翻译", "AI问答"]
+const COMMAND_TO_TAB = { "note": 0, "translate": 1, "aichat": 2, "settings": 3 }
+const PAGE_TITLES = ["便签", "翻译", "AI问答", "设置"]
 
 @onready var tabs: TabContainer = $Root/Layout/Tabs
 

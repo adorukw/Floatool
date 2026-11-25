@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Ipc="*uid://cjt23bblgqdsu"
+Settings="*uid://d1eiejl7c7773"
 WindowManager="*uid://dgyq85u5pa13l"
 
 [display]

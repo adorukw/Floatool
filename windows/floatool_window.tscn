@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://b8jy5jx26hru8" path="res://panels/note_panel.tscn" id="1_ykeet"]
 [ext_resource type="PackedScene" uid="uid://dwgsoi1opottm" path="res://panels/translate_panel.tscn" id="2_yiefv"]
 [ext_resource type="PackedScene" uid="uid://bwhw3k52wp0ce" path="res://panels/ai_chat_panel.tscn" id="3_ky36i"]
+[ext_resource type="PackedScene" uid="uid://c5ax7ch4lo8yl" path="res://panels/settings_panel.tscn" id="5_ky36i"]
 
 [node name="FloatoolWindow" type="Window" unique_id=107489173]
 oversampling_override = 1.0
 title = "Floatool"
+position = Vector2i(0, 36)
 size = Vector2i(420, 560)
 always_on_top = true
 min_size = Vector2i(360, 420)
@@ -42,3 +44,8 @@ metadata/_tab_index = 1
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="Settings" parent="Root/Layout/Tabs" unique_id=1429812914 instance=ExtResource("5_ky36i")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
