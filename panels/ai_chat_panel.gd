@@ -41,6 +41,9 @@ func _add_bubble(text: String, from_user: bool) -> RichTextLabel:
 	var b := BUBBLE.instantiate()
 	var label := b.get_node("Margin/Text") as RichTextLabel
 	label.text = text
+	b.theme_type_variation = &"UserBubble" if from_user else &"AssistantBubble"
+	if from_user:
+		label.add_theme_color_override("default_color", Color.WHITE)
 
 	b.size_flags_horizontal = Control.SIZE_SHRINK_END if from_user else Control.SIZE_SHRINK_BEGIN
 	messages.add_child(b)

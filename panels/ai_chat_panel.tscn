@@ -35,6 +35,7 @@ wrap_mode = 1
 [node name="SendButton" type="Button" parent="Layout/InputBar" unique_id=1831386527]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+theme_type_variation = &"PrimaryButton"
 text = "发送"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=528751470]

@@ -28,7 +28,7 @@ layout_mode = 2
 
 [node name="Header" type="Label" parent="Layout/Scroll/Content/NoteSection" unique_id=256087876]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"SectionLabel"
 text = "便签"
 
 [node name="Grid" type="GridContainer" parent="Layout/Scroll/Content/NoteSection" unique_id=1854924744]
@@ -49,6 +49,7 @@ size_flags_horizontal = 3
 
 [node name="BrowseButton" type="Button" parent="Layout/Scroll/Content/NoteSection/Grid/PathRow" unique_id=1422692495]
 layout_mode = 2
+theme_type_variation = &"SecondaryButton"
 text = "浏览..."
 
 [node name="Label2" type="Label" parent="Layout/Scroll/Content/NoteSection/Grid" unique_id=240347985]
@@ -57,6 +58,7 @@ text = "默认文件夹路径"
 
 [node name="OpenFolderButton" type="Button" parent="Layout/Scroll/Content/NoteSection/Grid" unique_id=51567585]
 layout_mode = 2
+theme_type_variation = &"SecondaryButton"
 text = "打开所在文件夹"
 
 [node name="HSeparator" type="HSeparator" parent="Layout/Scroll/Content/NoteSection" unique_id=2088408546]
@@ -67,7 +69,7 @@ layout_mode = 2
 
 [node name="Header" type="Label" parent="Layout/Scroll/Content/TranslateSection" unique_id=1747335765]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"SectionLabel"
 text = "翻译"
 
 [node name="Grid" type="GridContainer" parent="Layout/Scroll/Content/TranslateSection" unique_id=822484249]
@@ -119,6 +121,7 @@ layout_mode = 2
 [node name="TestButton" type="Button" parent="Layout/Scroll/Content/TranslateSection/TestRow" unique_id=529458781]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
 text = "测试连接"
 
 [node name="TestResult" type="Label" parent="Layout/Scroll/Content/TranslateSection/TestRow" unique_id=1983462354]
@@ -129,7 +132,7 @@ layout_mode = 2
 
 [node name="Header" type="Label" parent="Layout/Scroll/Content/AISection" unique_id=439744456]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"SectionLabel"
 text = "AI 助手"
 
 [node name="Grid" type="GridContainer" parent="Layout/Scroll/Content/AISection" unique_id=1425581260]
@@ -193,6 +196,7 @@ layout_mode = 2
 [node name="TestButton" type="Button" parent="Layout/Scroll/Content/AISection/TestRow" unique_id=453901476]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
 text = "测试连接"
 
 [node name="TestResult" type="Label" parent="Layout/Scroll/Content/AISection/TestRow" unique_id=575999406]
@@ -203,7 +207,7 @@ layout_mode = 2
 
 [node name="Header" type="Label" parent="Layout/Scroll/Content/HotKeySection" unique_id=1386456631]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"SectionLabel"
 text = "快捷键"
 
 [node name="Label" type="Label" parent="Layout/Scroll/Content/HotKeySection" unique_id=340543452]
@@ -214,6 +218,7 @@ text = "使用命令
 
 [node name="CopyButton" type="Button" parent="Layout/Scroll/Content/HotKeySection" unique_id=227352964]
 layout_mode = 2
+theme_type_variation = &"SecondaryButton"
 text = "复制快捷键"
 
 [node name="BottomBar" type="HBoxContainer" parent="Layout" unique_id=1597162118]
@@ -231,6 +236,7 @@ text = "未保存"
 [node name="SaveButton" type="Button" parent="Layout/BottomBar" unique_id=617210535]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"PrimaryButton"
 text = "保存设置"
 
 [node name="DeepLTestHttp" type="HTTPRequest" parent="." unique_id=1975844863]

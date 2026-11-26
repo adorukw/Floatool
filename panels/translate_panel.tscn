@@ -27,6 +27,7 @@ popup/item_2/id = 2
 
 [node name="SwapButton" type="Button" parent="Layout/LangBar" unique_id=1098265657]
 layout_mode = 2
+theme_type_variation = &"GhostButton"
 text = "⇄"
 
 [node name="ToLang" type="OptionButton" parent="Layout/LangBar" unique_id=1255669914]
@@ -65,6 +66,7 @@ size_flags_horizontal = 3
 
 [node name="TranslateButton" type="Button" parent="Layout/BottomBar" unique_id=639004266]
 layout_mode = 2
+theme_type_variation = &"PrimaryButton"
 text = "翻译"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=2005377045]
